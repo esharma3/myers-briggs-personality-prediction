@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+
+[packages]
+ipykernel = "*"
+numpy = "*"
+pandas = "*"
+sqlalchemy = "*"
+pymysql = "*"
+nb-black = "*"
+jinja2 = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+scikit-learn = "*"
+sklearn = "*"
+seaborn = "*"
+matplotlib = "*"
+scipy = "*"
+patsy = "*"
+statsmodels = "*"
+python-dotenv = "*"
+gunicorn = "*"
+
+[requires]
+python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
