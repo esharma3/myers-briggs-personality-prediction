@@ -5,7 +5,8 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     # list of links to other routes
-    return render_template("index.html")
+    string = "Hello world!"
+    return render_template("index.html", string=string)
 
 @app.route("/predict")
 def predict():
