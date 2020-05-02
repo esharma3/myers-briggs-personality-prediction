@@ -25,6 +25,7 @@ patsy = "*"
 statsmodels = "*"
 python-dotenv = "*"
 gunicorn = "*"
+wordcloud = "*"
 
 [requires]
 python_version = "3.7"
