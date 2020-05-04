@@ -25,6 +25,8 @@ patsy = "*"
 statsmodels = "*"
 python-dotenv = "*"
 gunicorn = "*"
+nltk = "*"
+vadersentiment = "*"
 wordcloud = "*"
 
 [requires]
