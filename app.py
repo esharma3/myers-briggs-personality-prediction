@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask import Flask, request, jsonify, render_template
 from joblib import load
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route("/")
-<<<<<<< HEAD
+
 def status():
     return "Ready!"
 
@@ -30,7 +30,7 @@ def predict():
     return jsonify({
         "result": model.predict(text)[0]
     })
-=======
+
 def home():
     # list of links to other routes
     string = "Hello world!"
@@ -38,16 +38,23 @@ def home():
 
 @app.route('/response', methods=['POST'])
 def response():
-    snippet = request.form.get("snippet")
+    snippet = request.form.get("fsnippet")
     # Preprocessing happens here, then:
     personality_type = (snippet * 2)
     return render_template("index.html", personality=personality_type)
->>>>>>> master
+
+    snippet = snippet.to_str()
+    
+    return render_template("index.html", personality=snippet)
 
 @app.route("/analysis")
 def analysis():
     return render_template("analysis.html")
 
+@app.route("/methodology")
+def methodology():
+    return render_template("methodology.html")
+ 
 @app.route("/about")
 def about():
     return render_template("about.html")
