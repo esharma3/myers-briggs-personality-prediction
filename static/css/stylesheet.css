@@ -1,0 +1,198 @@
+/* Global styling */
+html {
+    scroll-behavior: smooth;
+}
+
+  h1 {
+    padding-top: 40px;
+    color: #666666;
+  }
+  
+  h4 {
+    color: #666666;
+    font-size: 18px;
+    font-weight: lighter;
+  }
+  
+  section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
+
+.basic-white {
+    height: 300px;
+    background-color: #FFFFFF;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(86, 172, 138, .5);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FFFFFF;
+  text-shadow: .1px .1px #666;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #fad500;
+}
+
+.navbar-light .navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-light .navbar-brand:hover {
+  color: #666666;
+}
+
+
+/* This is all that badass hero image section*/
+.bgimage {
+  width:100%;
+  height:500px;
+  padding: 25px 25px;
+  background: url('../images/home-personalities-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgimage h1 {
+  color: white;
+  text-shadow: 3px 3px #333;
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+}
+
+.bgimage h2 {
+  color: white;
+  text-shadow: 3px 3px #333;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bgimage p {
+  color:rgba(86, 172, 138, 1);
+  text-shadow: .5px .5px #666;
+  font-size: 18px;
+  text-align: center; 
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 10px;
+  display: flex;
+  max-width: 20rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-outline-success {
+  border-radius: 25px;
+  vertical-align: middle;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color:rgba(86, 172, 138, 1);
+  padding: 10px;
+  display: inline;
+}
+
+.bgimage blockquote {
+  color: white;
+  text-shadow: 1px 1px #333;
+  font-size: 40px;
+  text-align: center; 
+  top-margin: 50%;
+}
+/* End of hero */
+
+
+/* Search bar */
+#search {
+  text-align: center;
+  display: block;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+/* Still need to figure out why is not centering */
+.form-control {
+  border-radius: .50rem;
+  border-color: #fad500;
+  height: 50px;
+  min-width: 450px;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  display: inline;
+  justify-content: center;
+  align-self: center;
+  vertical-align: middle;
+}
+
+
+/* footer */
+footer {
+  padding-top: 50px;
+}
+
+
+
+/* Styling for bios */
+.bios h1 p {
+  vertical-align: middle;
+}
+
+.bios p {
+  vertical-align: middle;
+}
+
+.bios .card-img {
+  height:200px;
+  width: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  vertical-align: middle;
+  margin: 20px;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray; 
+  -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 3s; /* Firefox < 16 */
+  animation: fadein 3s;
+}
+
+.bios .card-img:hover {
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+
+@keyframes fadein {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
