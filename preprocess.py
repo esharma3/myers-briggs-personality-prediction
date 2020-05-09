@@ -40,15 +40,17 @@ def clean(s):
 
 def prep_data(s):
         clean_s = clean(s)
-        d = {'char_count':len(clean_s),
+        d = {
+            'link_count':s.count('http'),
+            'upper':len([x for x in s.split() if x.isupper()])
+            'char_count':len(clean_s),
             'word_count':clean_s.count(' ')+1
             'qm':clean_s.count('?'),
             'em':clean_s.count('!'),
             'colons':colons(clean_s),
             'emojis':emojis(clean_s),
+            'unique_words':unique_words(clean_s),
             'ellipses':len(re.findall(r'\.\.\.\ ', clean_s)),
-            'unique_words':unique_words(clean_s)
-            'link_count':s.count('http'),
-            'upper':len([x for x in s.split() if x.isupper()]),
-            'img_count':len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s))}
+            'img_count':len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s))
+            }
     return d
