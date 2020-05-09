@@ -58,7 +58,6 @@
 			<h2> Heading 2 </h2>
 			<hr/>
 			<p>Man braid woke poke small batch helvetica shabby chic. Health goth farm-to-table ugh franzen direct trade small batch knausgaard. Cray blog bicycle rights jianbing heirloom subway tile. Mustache salvia bespoke bitters street art etsy actually ugh. Crucifix plaid wolf gluten-free pitchfork messenger bag vice pabst. Roof party +1 mixtape XOXO leggings kickstarter master cleanse chia viral celiac ramps sustainable.</p>
-			<p class="lead">Here is a string from our app: {{string}}</p>
 		</div> 
 	</div>
 		<div class="row">
@@ -79,12 +78,12 @@
 			<br>
 				<div class="form-group">
 					<form class="form-inline my-2 my-lg-0" method="POST" action="/response">
-						<input class="form-control mr-md-2" type="search" snippet="fsnippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
+						<input class="form-control mr-md-2" type="text" name="fsnippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
 						<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit" value="Submit">Go!</button>
 					</form>
 					<br>
-					{% if personality %}
-					<h4>You wrote: {{personality}}</h4>
+					{% if name %}
+					<h4>Length of your string is: {{name}}</h4>
   					{% endif %}
 				</div>
 			</div>
