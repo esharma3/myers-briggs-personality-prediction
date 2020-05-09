@@ -1,35 +1,11 @@
-
 from flask import Flask, request, jsonify, render_template
 from joblib import load
+from predict import predict
 
 model = load("clf.joblib")
 
 
 app = Flask(__name__)
-
-
-@app.route("/")
-
-def status():
-    return "Ready!"
-
-{
-    "text": "message"
-}
-
-{
-    "result": "ham"
-}
-
-@app.route("/predict", methods=["POST"])
-def predict():
-    data_dict = request.get_json()
-
-    text = [data_dict["text"]]
-
-    return jsonify({
-        "result": model.predict(text)[0]
-    })
 
 def home():
     # list of links to other routes
@@ -40,12 +16,8 @@ def home():
 def response():
     snippet = request.form.get("fsnippet")
     # Preprocessing happens here, then:
-    personality_type = (snippet * 2)
+    personality_type = predict(snippet)
     return render_template("index.html", personality=personality_type)
-
-    snippet = snippet.to_str()
-    
-    return render_template("index.html", personality=snippet)
 
 @app.route("/analysis")
 def analysis():
