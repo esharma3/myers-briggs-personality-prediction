@@ -19,6 +19,10 @@ def response():
 @app.route("/analysis")
 def analysis():
     return render_template("analysis.html")
+
+@app.route("/methodology")
+def methodology():
+    return render_template("methodology.html")
  
 @app.route("/about")
 def about():
