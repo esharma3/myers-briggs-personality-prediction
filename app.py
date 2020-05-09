@@ -1,23 +1,24 @@
 from flask import Flask, request, jsonify, render_template
-from joblib import load
+# from joblib import load
 from predict import predict
 
-model = load("clf.joblib")
+# model = load("clf.joblib")
 
 
 app = Flask(__name__)
 
-def home():
-    # list of links to other routes
-    string = "Hello world!"
-    return render_template("index.html", string=string)
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/response', methods=['POST'])
+@app.route('/response', methods=['GET', 'POST'])
 def response():
-    snippet = request.form.get("fsnippet")
-    # Preprocessing happens here, then:
-    personality_type = predict(snippet)
-    return render_template("index.html", personality=personality_type)
+
+    if request.method == "POST":
+        snippet = request.form['fsnippet']
+        # Testing with predict.py
+        personality_type = predict(snippet)
+    return render_template("index.html", name=personality_type)
 
 @app.route("/analysis")
 def analysis():
