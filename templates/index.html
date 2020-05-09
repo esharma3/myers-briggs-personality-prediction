@@ -28,6 +28,9 @@
 		  <a class="nav-link" href="/analysis">Analysis</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" href="/methodology">Methodology</a>
+		</li>
+		<li class="nav-item">
 		  <a class="nav-link" href="/about">About</a>
 		</li>
 	  </ul>
@@ -76,11 +79,12 @@
 			<br>
 				<div class="form-group">
 					<form class="form-inline my-2 my-lg-0" method="POST" action="/response">
-						<input class="form-control mr-md-2" type="search" name="snippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
-						<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit">Go!</button>
+						<input class="form-control mr-md-2" type="search" snippet="fsnippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
+						<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit" value="Submit">Go!</button>
 					</form>
-					{% if snippet %}
-					<h3>Personality type is: {{personality}}</h3>
+					<br>
+					{% if personality %}
+					<h4>You wrote: {{personality}}</h4>
   					{% endif %}
 				</div>
 			</div>

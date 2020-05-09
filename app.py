@@ -14,7 +14,7 @@ def home():
 
 @app.route('/response', methods=['POST'])
 def response():
-    snippet = request.form.get("snippet")
+    snippet = request.form.get("fsnippet")
     # Preprocessing happens here, then:
     personality_type = predict(snippet)
     return render_template("index.html", personality=personality_type)
@@ -23,6 +23,10 @@ def response():
 def analysis():
     return render_template("analysis.html")
 
+@app.route("/methodology")
+def methodology():
+    return render_template("methodology.html")
+ 
 @app.route("/about")
 def about():
     return render_template("about.html")
