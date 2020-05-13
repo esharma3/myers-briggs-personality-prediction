@@ -15,20 +15,58 @@
 </head>
 
 <body>
-<!-- Just to check the images color palatte -->
-<img src="../static/images/avg_char.png">
-<br>
-<img src="../static/images/avg_words.png">
-<br>
-<img src="../static/images/character_hist.png">
-<br>
-<img src="../static/images/link-hist.png">
-<br>
-<img src="../static/images/type_hist.png">
-<br>
-<img src="../static/images/word_hist.png">
-<br>
+<!-- This is the nav bar. Paste on every page at the top of the body-->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+	<a class="navbar-brand" href="/"><strong>PPREDICTOR 3.0</strong></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+  
+	<div class="collapse navbar-collapse" id="navbarNavDropdown">
+	  <ul class="navbar-nav ml-auto">
+		<li class="nav-item">
+		  <a class="nav-link" href="/analysis">Analysis</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="/methodology">Methodology</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="/about">About</a>
+		</li>
+	  </ul>
+	</div>
+</nav>
 
+<section class="header-subpage">
+    <br/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+            <h1>Methodology</h1>
+            <p><strong>Something, something:</strong> 
+                VHS disrupt mustache fingerstache. Fingerstache flannel umami, VHS af pug portland palo santo vape stumptown pabst live-edge semiotics cliche narwhal. Hoodie pitchfork salvia poutine quinoa, deep v vinyl cold-pressed +1 meh hell of. Retro stumptown hella raw denim church-key.            Meet the proud team!!</p>
+            </div> 
+        </div>
+    </div>
+</section>
+
+<br/>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<blockquote class="blockquote text-center">
+				<p class="mb-0">“The human race is just a chemical scum on a moderate-sized planet, 
+					orbiting around a very average star in the outer suburb of one among a 
+					hundred billion galaxies. We are so insignificant that I can't believe the 
+					whole universe exists for our benefit. That would be like saying that you 
+					would disappear if I closed my eyes.”</p>
+				<footer class="blockquote-footer">Stephen Hawking. <cite title="Source Title">Theoretical physicist</cite></footer>
+			</blockquote>
+		</div>
+	</div>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 <!-- Footer stuff -->
