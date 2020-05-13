@@ -3,59 +3,67 @@ html {
     scroll-behavior: smooth;
 }
 
-  h1 {
-    padding-top: 40px;
-    color: #666666;
-  }
-  
-  h4 {
-    color: #666666;
-    font-size: 18px;
-    font-weight: lighter;
-  }
-  
-  section {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-right: 25px;
-    padding-left: 25px;
-  }
-
-.basic-white {
-    height: 300px;
-    background-color: #FFFFFF;
+h1 {
+  padding-top: 40px;
+  color: #FFF;
+  font-weight: bold;
 }
 
+h4 {
+  color: #666666;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.lead {
+  font-weight: lighter;
+}
+
+/* Basic white section */
+.basic-white {
+    height: 300px;
+    background-color: #fff;
+}
+
+/* Nav */
 .navbar {
   position: fixed;
   width: 100%;
-  background-color: rgba(86, 172, 138, .5);
+  background-color: rgba(255, 255, 255, 0.5);
   height: 50px;
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #FFFFFF;
-  text-shadow: .1px .1px #666;
+  color: #666666;
+  text-shadow: .1px .1px #999;
 }
 
 .navbar-light .navbar-brand {
-  color: #FFFFFF;
+  color: #333;
+  font-weight: bold;
 }
 
 .navbar a:hover {
   border-bottom: 3px solid #fad500;
-  color: #FFFFFF;
+  color: #666;
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-  color: #FFFFFF;
+  color: #666;
 }
 
 .navbar a {
-  font-weight: bold;
-  color: #FFFFFF;
+  font-weight: 300;
+  color: #666;
 }
-
+/* End of nav */
 
 /* This is all that badass hero image section*/
 .bgimage {
@@ -124,6 +132,12 @@ html {
 }
 /* End of hero */
 
+/* Jumbotron */
+.jumbotron {
+  background-color: #3c9294;
+  color: #FFFFFF;
+  /* rgba(86, 172, 138, .5) */
+}
 
 /* Search bar */
 #search {
@@ -137,7 +151,6 @@ html {
   align-self: center;
 }
 
-/* Still need to figure out why is not centering */
 .form-control {
   border-radius: .50rem;
   border-color: #fad500;
