@@ -1,23 +1,30 @@
 <!doctype html>
 
 <html>
-    
+
 <head>
 	<title> Myers briggs personality prediction | Analysis </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- External CSS file -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<!-- Our own css files -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 	<!-- Bootstrap CDN -->
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+
 <!-- This is the nav bar. Paste on every page at the top of the body-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-	<a class="navbar-brand" href="/"><strong>PPREDICTOR 3.0</strong></a>
+	<a class="navbar-brand" href="/">MB|PREDICTOR</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	  <span class="navbar-toggler-icon"></span>
 	</button>
@@ -37,18 +44,100 @@
 	</div>
 </nav>
 
-<section class="header-subpage">
-    <br/>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-            <h1>Analysis</h1>
-            <p><strong>Something, something:</strong> 
-                VHS disrupt mustache fingerstache. Fingerstache flannel umami, VHS af pug portland palo santo vape stumptown pabst live-edge semiotics cliche narwhal. Hoodie pitchfork salvia poutine quinoa, deep v vinyl cold-pressed +1 meh hell of. Retro stumptown hella raw denim church-key.            Meet the proud team!!</p>
-            </div> 
-        </div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Analysis</h1>
+        <p class="lead">
+          VHS disrupt mustache fingerstache. Fingerstache flannel umami, 
+          VHS af pug portland palo santo vape stumptown pabst live-edge semiotics cliche narwhal.
+          Hoodie pitchfork salvia poutine quinoa, deep v vinyl cold-pressed +1 meh hell of. 
+          Retro stumptown hella raw denim church-key.
+        </p>
     </div>
-</section>
+</div>
+
+<div class="container gallery-container">
+    <div class="tz-gallery">
+
+        <div class="row">
+
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/type_hist.png">
+                        <img src="../static/images/type_hist.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Distribution of Personality Types</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/word_hist.png">
+                        <img src="../static/images/word_hist.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Word Count Histogram</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/avg_words.png">
+                        <img src="../static/images/avg_words.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Avg. Word Count per Post</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/box_compsent.png">
+                        <img src="../static/images/box_compsent.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Compound Sentiment by Type</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/box_emoji.png">
+                        <img src="../static/images/box_emoji.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Emoji by Type</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="../static/images/box_negsent.png">
+                        <img src="../static/images/box_negsent.png" width="320">
+                    </a>
+                    <div class="caption">
+                        <h3>Negative Sentiment by Type</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
 
 </body>
 
@@ -58,5 +147,4 @@
 	  <a href="index.html">UT Data Bootcamp</a>
 	</div>
 </footer>
-
 </html>
