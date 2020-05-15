@@ -15,19 +15,43 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 mbti = ["INFP", "INFJ", "INTP", "INTJ", "ENTP", "enfp", "ISTP", "ISFP", "ENTJ", "ISTJ", "ENFJ", "ISFJ", "ESTP", "ESFP", "ESFJ", "ESTJ"]
 tags_dict = {
-    "ADJ": ["JJ", "JJR", "JJS"],
-    "ADP": ["EX", "TO"],
-    "ADV": ["RB", "RBR", "RBS", "WRB"],
-    "CONJ": ["CC", "IN"],
-    "DET": ["DT", "PDT", "WDT"],
-    "NOUN": ["NN", "NNS", "NNP", "NNPS"],
-    "NUM": ["CD"],
-    "PRT": ["RP"],
-    "PRON": ["PRP", "PRP$", "WP", "WP$"],
-    "VERB": ["MD", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ"],
+    "ADJ_avg": ["JJ", "JJR", "JJS"],
+    "ADP_avg": ["EX", "TO"],
+    "ADV_avg": ["RB", "RBR", "RBS", "WRB"],
+    "CONJ_avg": ["CC", "IN"],
+    "DET_avg": ["DT", "PDT", "WDT"],
+    "NOUN_avg": ["NN", "NNS", "NNP", "NNPS"],
+    "NUM_avg": ["CD"],
+    "PRT_avg": ["RP"],
+    "PRON_avg": ["PRP", "PRP$", "WP", "WP$"],
+    "VERB_avg": ["MD", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ"],
     ".": ["#", "$", "''", "(", ")", ",", ".", ":"],
     "X": ["FW", "LS", "UH"],
 }
+features = [
+            "clean_posts",
+            "compound_sentiment",
+            "ADJ_avg",
+            "ADP_avg",
+            "ADV_avg",
+            "CONJ_avg",
+            "DET_avg",
+            "NOUN_avg",
+            "NUM_avg",
+            "PRT_avg",
+            "PRON_avg",
+            "VERB_avg",
+            "qm",
+            "em",
+            "colons",
+            "emojis",
+            "word_count",
+            "unique_words",
+            "upper",
+            "link_count",
+            "ellipses",
+            "img_count",
+        ]
 
 def unique_words(s):
     unique = set(s.split(' ')) 
@@ -62,38 +86,46 @@ def lemmitize(s):
     return new_s
 
 def clean(s):
+    #remove urls
     s = re.sub(
             re.compile(r"https?:\/\/(www)?.?([A-Za-z_0-9-]+).*"),
-            lambda match: match.group(2),
+            "",
             s
         )
+    #remove emails
     s = re.sub(
-        re.compile(r"\S+@\S+"), " ",
+        re.compile(r"\S+@\S+"), "",
         s
         )
+    #remove punctuation
+    s = re.sub(
+        re.compile(r"[^a-z\s]"), "",
+        s
+        )
+    #Make everything lowercase
     s = s.lower()
+    #remove all personality types
     for type_word in mbti:
         s = s.replace(
-            type_word.lower(), " ")
+            type_word.lower(), "")
     return s
 
 def prep_counts(s):
     clean_s = clean(s)
     d = {
-        'post':s,
-        'clean_post':clean_s,
+        'clean_posts':lemmitize(clean_s),
         'link_count':s.count('http'),
         'youtube':s.count('youtube') + s.count('youtu.be'),
         'img_count':len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s)),
         'upper':len([x for x in s.split() if x.isupper()]),
-        'char_count':len(clean_s),
+        'char_count':len(s),
         'word_count':clean_s.count(' ')+1,
-        'qm':clean_s.count('?'),
-        'em':clean_s.count('!'),
-        'colons':colons(clean_s),
-        'emojis':emojis(clean_s),
+        'qm':s.count('?'),
+        'em':s.count('!'),
+        'colons':colons(s),
+        'emojis':emojis(s),
         'unique_words':unique_words(clean_s),
-        'ellipses':len(re.findall(r'\.\.\.\ ', clean_s))
+        'ellipses':len(re.findall(r'\.\.\.\ ', s))
         }
     return clean_s, d
 
@@ -110,16 +142,13 @@ def prep_sentiment(s):
 
 def tag_pos(s):
     tagged_words = nltk.pos_tag(word_tokenize(s))
-    d = {}
+    d = dict.fromkeys(tags_dict,0) 
     for tup in tagged_words:
         tag = tup[1]
         for key,val in tags_dict.items():
             if tag in val:
                 tag = key
-        if tag in d:
-            d[tag]+=1
-        else:
-            d[tag]=1
+        d[tag]+=1
     return d
 
 def prep_data(s):
@@ -131,11 +160,11 @@ def prep_data(s):
         )
     d.update(
         tag_pos(clean_s))
-    return pd.DataFrame([d])
+    return pd.DataFrame([d])[features]
 
 if __name__ == "__main__":
     t = time.time()
-    string = "I just wanna to go home!!!!!! :sadpanda: https://www.youtube.com/watch?v=TQP20LTI84A"
+    string = "That somehow managed to be record short yet answer almost all the questions we would've asked, haha! Hi Deb! Welcome to Hou Tian; nice to meet you! I'm Jhenne, one of the mods here-- which means I gotta give you the modly speech :] Make sure to check out the Mandatory Reading up top! Our constantly updated Library is also a great resource, though it isn't mandatory reading-- we like to tell members to 'read as you need', rather than marathon read it all at once. One of the most helpful threads is the Gameplay So Far thread, which breaks down what all has gone down on the boards. (Now, the summary for January isn't tossed up yet, but we'd be happy to break down what you missed if you'd like.) I see that you're interested in Mai! That means both the Trying for a Canon Character page, and the Canon Character Rules and Consequences post will be helpful to check out. If you're ever considering an original character, we have our player-made adoptables list, and our factions, comprised of the Jade Shark/Bending Opposition, Original People of the Flame, and The Bending Crime Syndicates. As far as characters go, in the past tense I play Srai, a Jade Shark [s]that is very very dusty. In the Korraverse I play a reporter named Chihiro, and an ex-taxi dancer/wannabe actress named Naoki, and a Republic City University student named Haruna. I think that's it! If you have any questions, don't hesitate to ask a mod, or drop it right here in this thread so we can get back to you! Again, welcome! #CONFETTI"
     print(string)
     print(prep_data(string))
     print(f"Preprocessing Time: {time.time() - t} seconds")
