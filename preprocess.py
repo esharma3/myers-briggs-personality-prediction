@@ -80,6 +80,8 @@ def clean(s):
 def prep_counts(s):
     clean_s = clean(s)
     d = {
+        'post':s,
+        'clean_post':clean_s,
         'link_count':s.count('http'),
         'youtube':s.count('youtube') + s.count('youtu.be'),
         'img_count':len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s)),
