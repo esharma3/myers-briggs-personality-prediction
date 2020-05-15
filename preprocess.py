@@ -1,4 +1,5 @@
 import re
+import time
 import nltk
 from nltk.corpus import stopwords
 # nltk.download('averaged_perceptron_tagger')
@@ -12,6 +13,20 @@ from nltk.stem import WordNetLemmatizer
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 mbti = ["INFP", "INFJ", "INTP", "INTJ", "ENTP", "enfp", "ISTP", "ISFP", "ENTJ", "ISTJ", "ENFJ", "ISFJ", "ESTP", "ESFP", "ESFJ", "ESTJ"]
+tags_dict = {
+    "ADJ": ["JJ", "JJR", "JJS"],
+    "ADP": ["EX", "TO"],
+    "ADV": ["RB", "RBR", "RBS", "WRB"],
+    "CONJ": ["CC", "IN"],
+    "DET": ["DT", "PDT", "WDT"],
+    "NOUN": ["NN", "NNS", "NNP", "NNPS"],
+    "NUM": ["CD"],
+    "PRT": ["RP"],
+    "PRON": ["PRP", "PRP$", "WP", "WP$"],
+    "VERB": ["MD", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ"],
+    ".": ["#", "$", "''", "(", ")", ",", ".", ":"],
+    "X": ["FW", "LS", "UH"],
+}
 
 def unique_words(s):
     unique = set(s.split(' ')) 
@@ -46,14 +61,6 @@ def lemmitize(s):
     return new_s
 
 def clean(s):
-    # new_s = s.replace(
-    #                 re.compile(r"https?:\/\/(www)?.?([A-Za-z_0-9-]+).*"),
-    #                 lambda match: match.group(2)
-    #                 )\
-    #             .replace(
-    #                 re.compile(r"\S+@\S+"), " "
-    #                 )\
-    #             .lower()
     s = re.sub(
             re.compile(r"https?:\/\/(www)?.?([A-Za-z_0-9-]+).*"),
             lambda match: match.group(2),
@@ -67,7 +74,6 @@ def clean(s):
     for type_word in mbti:
         s = s.replace(
             type_word.lower(), " ")
-
     return s
 
 def prep_counts(s):
@@ -99,15 +105,34 @@ def prep_sentiment(s):
         }
     return d
 
+def tag_pos(s):
+    tagged_words = nltk.pos_tag(word_tokenize(s))
+    d = {}
+    for tup in tagged_words:
+        tag = tup[1]
+        for key,val in tags_dict.items():
+            if tag in val:
+                tag = key
+        if tag in d:
+            d[tag]+=1
+        else:
+            d[tag]=1
+    return d
+
 def prep_data(s):
-    
     clean_s, d = prep_counts(s)
     d.update(
         prep_sentiment(
             lemmitize(clean_s)
             )
         )
+    d.update(
+        tag_pos(clean_s))
     return d
 
 if __name__ == "__main__":
-    print(prep_data("I just wanna to go home!!!!!! :sadpanda: https://www.youtube.com/watch?v=TQP20LTI84A"))
+    t = time.time()
+    string = "I just wanna to go home!!!!!! :sadpanda: https://www.youtube.com/watch?v=TQP20LTI84A"
+    print(string)
+    print(prep_data(string))
+    print(f"Preprocessing Time: {time.time() - t} seconds")
