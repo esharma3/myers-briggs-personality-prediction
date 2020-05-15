@@ -15,3 +15,9 @@ $(window).on("scroll", function() {
           $('nav').removeClass('black');
     }
 })
+
+
+// MDB Lightbox Init
+$(function () {
+      $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+      });
