@@ -1,5 +1,6 @@
 import re
 import time
+import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 # nltk.download('averaged_perceptron_tagger')
@@ -128,7 +129,7 @@ def prep_data(s):
         )
     d.update(
         tag_pos(clean_s))
-    return d
+    return pd.DataFrame([d])
 
 if __name__ == "__main__":
     t = time.time()
