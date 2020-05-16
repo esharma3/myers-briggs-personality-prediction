@@ -1,0 +1,50 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+
+title: compute beta SecuritySettings export schema
+description: A gcloud export/import command YAML validation schema.
+type: object
+additionalProperties: false
+properties:
+  COMMENT:
+    type: object
+    description: User specified info ignored by gcloud import.
+    additionalProperties: false
+    properties:
+      template-id:
+        type: string
+      region:
+        type: string
+      description:
+        type: string
+      date:
+        type: string
+      version:
+        type: string
+  UNKNOWN:
+    type: array
+    description: Unknown API fields that cannot be imported.
+    items:
+      type: string
+  authentication:
+    description: |-
+      A URL referring to a networksecurity.Authentication resource that
+      describes how clients should authenticate with this service's backends. If
+      left blank, communications between services are not encrypted (i.e., the
+      TLS policy is set to OPEN). When sending traffic to this service's
+      backends, the OriginationTls setting of
+      Authentication.TransportAuthentication is applied. Refer to the
+      Authentication and Authentication.TransportAuthentication.OriginationTls
+      resources for additional details. authentication only applies to a global
+      BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+    type: string
+  subjectAltNames:
+    description: |-
+      A list of subject alternate names to verify the subject identity (SAN) in
+      the certificate presented by the server, to authorize the SAN list as
+      identities to run the service represented by this BackendService. If
+      specified, the client will verify that the server certificate's subject
+      alt name matches one of the specified values. Only applies to a global
+      BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+    type: array
+    items:
+      type: string
