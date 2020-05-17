@@ -78,12 +78,12 @@ def colons(post):
 
 def lemmitize(s):
     lemmatizer = WordNetLemmatizer()
-    new_s = [
-                lemmatizer.lemmatize(word)
-                for word in s.split(" ")
-                if word not in stopwords.words("english")
-            ]
-    return new_s
+    new_s = ""
+    for word in s.split(" "):
+        lemmatizer.lemmatize(word)
+        if word not in stopwords.words("english"):
+            new_s+=word+" "
+    return new_s[:-1]
 
 def clean(s):
     #remove urls
