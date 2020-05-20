@@ -3,7 +3,7 @@ from preprocess import prep_data
 import time
 import os
 
-def predict_e(s):
+def predict(s):
 
     X = prep_data(s)
 
