@@ -277,3 +277,9 @@ to   { opacity: 1; }
 .baguetteBox-button {
   background-color: transparent !important;
 }
+
+
+/* Accordion */
+.md-accordion a {
+  color: #A386B4;
+}

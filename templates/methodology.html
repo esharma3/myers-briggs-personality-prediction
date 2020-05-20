@@ -49,23 +49,11 @@
 
 <br/>
 <div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<blockquote class="blockquote text-center">
-				<p class="mb-0">“The human race is just a chemical scum on a moderate-sized planet, 
-					orbiting around a very average star in the outer suburb of one among a 
-					hundred billion galaxies. We are so insignificant that I can't believe the 
-					whole universe exists for our benefit. That would be like saying that you 
-					would disappear if I closed my eyes.”</p>
-				<footer class="blockquote-footer">Stephen Hawking. <cite title="Source Title">Theoretical physicist</cite></footer>
-			</blockquote>
-		</div>
-	</div>
     <div class="row">
 		<div class="col-lg-12">
             First, let's go into Myers-Briggs personality types. Myers and Briggs were 2 intelligent women in the early 1900s who noticed different people thought in different ways. They decided to analyse and classify the different people around them. 
             During WWII, their published research and personality types were used to identify the best job type for women to do while the men were off at war. 
-            Now, there are 5 attributes and the test is more for fun and self-understanding than finding your place in society.
+            Now, there are 5 attributes and the test is more for fun and self-understanding than finding your place in society. Okay, back to our project:
 		</div>
 	</div>
 </div>
@@ -86,7 +74,6 @@
 				<h5 class="mb-0">
 					Purpose <i class="fas fa-angle-down rotate-icon"></i>
 				</h5>
-				<span class="glyphicon-chevron-down" aria-hidden="true"></span>
 				</a>
 			</div>
 			<!-- Card body -->
@@ -137,7 +124,7 @@
 				data-parent="#accordionEx">
 				<div class="card-body">
 					<p>To examine the proportionality of each of the sixteen personality types, Matplotlib was used to plot the value counts of each of these sixteen types. The figure shows that there was high class imbalance in the dataset.</p>
-					<img src="../static/images/type_hist.png" width="320">
+					<img src="../static/images/type_hist.png" width="500">
 					<p>To handle the class imbalance issue, the following two steps were taken:</p>
 				<ol>
 					<li>First step was to divide the single “type” feature into four features:</li>
@@ -163,6 +150,7 @@
 							<li>J - 1</li>
 						</ul>
 					</ul>
+					<img src="../static/images/class_imbalance_2.png" width="500">
 					<li>The second step was to use random under sampling technique when building machine learning model. This is covered in step 6.</li>
 				</ol>
 			</div>
@@ -183,6 +171,7 @@
 				data-parent="#accordionEx">
 				<div class="card-body">
 					<p>Pandas correlation method was used to plot the correlation matrix to find any strong correlations between any of the four personality features. The plot shows that the features didn’t not show any strong correlation.</p>
+					<img src="../static/images/correlation.png" width="500">
 				</div>
 			</div>
 
@@ -281,6 +270,13 @@
 				data-parent="#accordionEx">
 				<div class="card-body">
 					<p>Using Logistic Regression coefficients, we did feature importance and plotted top 20 words used by each of the 4 Myers Briggs traits.</p>
+					<img src="../static/images/extrovert_vs_introvert.png" width="500">
+					<br>
+					<img src="../static/images/sensing_vs_intuition.png" width="500">
+					<br>
+					<img src="../static/images/thinking_vs_feeling.png" width="500">
+					<br>
+					<img src="../static/images/judging_vs_perceiving.png" width="500">
 				</div>
 			</div>
 
@@ -309,6 +305,24 @@
 	</div>
 </section>
 
+<hr>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<blockquote class="blockquote text-center">
+				<p class="mb-0">“The human race is just a chemical scum on a moderate-sized planet, 
+					orbiting around a very average star in the outer suburb of one among a 
+					hundred billion galaxies. We are so insignificant that I can't believe the 
+					whole universe exists for our benefit. That would be like saying that you 
+					would disappear if I closed my eyes.”</p>
+				<footer class="blockquote-footer">Stephen Hawking. <cite title="Source Title">Theoretical physicist</cite></footer>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<br>
+<hr>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
