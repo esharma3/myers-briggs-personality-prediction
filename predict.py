@@ -8,10 +8,10 @@ def predict_e(s):
     X = prep_data(s)
 
     # loading the 4 models
-    EorI_model = load(os.path.join("clf_is_Extrovert.joblib"))
-    SorN_model = load(os.path.join("clf_is_Sensing.joblib"))
-    TorF_model = load(os.path.join("clf_is_Thinking.joblib"))
-    JorP_model = load(os.path.join("clf_is_Judging.joblib"))
+    EorI_model = load(os.path.join("models","clf_is_Extrovert.joblib"))
+    SorN_model = load(os.path.join("models","clf_is_Sensing.joblib"))
+    TorF_model = load(os.path.join("models","clf_is_Thinking.joblib"))
+    JorP_model = load(os.path.join("models","clf_is_Judging.joblib"))
 
     # predicting
     EorI_pred = EorI_model.predict(X)
