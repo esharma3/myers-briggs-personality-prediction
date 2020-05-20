@@ -4,7 +4,7 @@ University of Texas at Austin, Data Bootcamp 2019-2020
 
 Group Members - Ekta Sharma | David Altuve | Kat Jansen
 
-![Myers Briggs Personality Types](static/images/mbti_for_readme.jpg)
+![Myers Briggs Personality Types](static/images/personality_types.jpg)
 
 ### Objective: 
 
