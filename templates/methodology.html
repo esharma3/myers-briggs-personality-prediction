@@ -49,6 +49,265 @@
 
 <br/>
 <div class="container">
+    <div class="row">
+		<div class="col-lg-12">
+            First, let's go into Myers-Briggs personality types. Myers and Briggs were 2 intelligent women in the early 1900s who noticed different people thought in different ways. They decided to analyse and classify the different people around them. 
+            During WWII, their published research and personality types were used to identify the best job type for women to do while the men were off at war. 
+            Now, there are 5 attributes and the test is more for fun and self-understanding than finding your place in society. Okay, back to our project:
+		</div>
+	</div>
+</div>
+
+<!-- Accordion section -->
+<section>
+	<div class="container">
+
+		<!--Accordion wrapper-->
+		<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+			<!-- Accordion card -->
+			<div class="card">
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingOne1">
+				<a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+				aria-controls="collapseOne1">
+				<h5 class="mb-0">
+					Purpose <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+				data-parent="#accordionEx">
+				<div class="card-body">
+				<p>The purpose of this project is to apply machine learning algorithms to examine if a person’s MBTI traits correlates with their style of writing on forums. </p>
+				</div>
+			</div>
+			</div>
+		
+			<!-- Accordion card -->
+			<div class="card">
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingTwo2">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+				aria-expanded="false" aria-controls="collapseTwo2">
+				<h5 class="mb-0">
+					Data Source <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+				data-parent="#accordionEx">
+				<div class="card-body">
+				<p>The publicly available Myers Briggs personality type dataset on Kaggle was used for this project. This dataset contains over 8675 rows of data, on each row is a person’s:</p>
+				<ul>
+					<li>Type (4 letter MBTI code/type)</li>
+					<li>A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))</li>
+				</ul>
+				</div>
+			</div>
+		
+			<!-- Accordion card -->
+			<div class="card">
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingThree3">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+				aria-expanded="false" aria-controls="collapseThree3">
+				<h5 class="mb-0">
+					Class Imbalance <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>To examine the proportionality of each of the sixteen personality types, Matplotlib was used to plot the value counts of each of these sixteen types. The figure shows that there was high class imbalance in the dataset.</p>
+					<img src="../static/images/type_hist.png" width="500">
+					<p>To handle the class imbalance issue, the following two steps were taken:</p>
+				<ol>
+					<li>First step was to divide the single “type” feature into four features:</li>
+					<ul>
+						<li>Extroversion vs. Introversion</li>
+						<ul>
+							<li>I - 0</li>
+							<li>E - 1</li>
+						</ul>
+						<li>Sensing vs. Intuition</li>
+						<ul>
+							<li>N - 0</li>
+							<li>S - 1</li>
+						</ul>
+						<li>Thinking vs. Feeling</li>
+						<ul>
+							<li>F - 0</li>
+							<li>T - 1</li>
+						</ul>
+						<li>Judging vs. Perceiving</li>
+						<ul>
+							<li>P - 0</li>
+							<li>J - 1</li>
+						</ul>
+					</ul>
+					<img src="../static/images/class_imbalance_2.png" width="500">
+					<li>The second step was to use random under sampling technique when building machine learning model. This is covered in step 6.</li>
+				</ol>
+			</div>
+			</div>
+			
+			<!-- Accordion card -->
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingFour4">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFour4"
+				aria-expanded="false" aria-controls="collapseFour4">
+				<h5 class="mb-0">
+					Finding Correlation <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>Pandas correlation method was used to plot the correlation matrix to find any strong correlations between any of the four personality features. The plot shows that the features didn’t not show any strong correlation.</p>
+					<img src="../static/images/correlation.png" width="500">
+				</div>
+			</div>
+
+			<!-- Accordion card -->
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingFive5">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFive5"
+				aria-expanded="false" aria-controls="collapseFive5">
+				<h5 class="mb-0">
+					Feature Engineering <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseFive5" class="collapse" role="tabpanel" aria-labelledby="headingFive5"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>Following steps were taken to prepare the data for machine learning models:</p>
+					<strong>Cleaning the Data</strong>
+					<ul>
+						<li>Posts were converted into lower case.</li>
+						<li>||| and punctuations were replaced by spaces.</li>
+						<li>Links and Emails were dropped.</li>
+						<li>MBTI personality types were dropped. There was quite a few uses of these types in the posts and we didn’t find them adding any value.</li>
+						<li>Words with one to two character length were dropped.</li>
+						<li>The cleaned data generated after executing above steps was Lemmitized using NLTK Word Net Lemmitizer. Stop Words were dropped at this stage. </li>
+						<li>The result of these steps stored as “clean posts” was cleaned and lemmatized set of words for each user.</li>
+					</ul>
+					<strong>Sentiment Scoring</strong>
+					<p>Sentiment Intensity Analyzer was used to calculate compound, positive, negative and neutral sentiment score for each user using the clean posts. </p>
+					<strong>Part of Speech Tagging</strong>
+					<p>NLTK POS tagger was used to tag each word with its part of speech tag. The average number of each of the POS tags was calculated for each user based on the original posts. The POS tags included were – Noun, Pronoun, Verb, Adverb, Adjective, Conjunction, Determiners, Numbers, Prepositions, Particles and Punctuations. </p>
+					<strong>Counting</strong>
+					<p>Per user average counts were taken for number of question marks, exclamations, colons, emojis, words, unique words, upper case words, links, ellipses and images. These counts were our additional features for the machine learning models covered in step 6.</p>
+				</div>	
+			</div>
+
+			<!-- Accordion card -->
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingSix6">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseSix6"
+				aria-expanded="false" aria-controls="collapseSix6">
+				<h5 class="mb-0">
+					Machine Learning Models <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+			<!-- Card body -->
+			<div id="collapseSix6" class="collapse" role="tabpanel" aria-labelledby="headingSix6"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>This was our final step. Various classifications models were used in this step on the dataset.</p>
+					<ul>
+						<li>The data was split into X (input features) and y (target).</li>
+							<ul>
+								<li>X comprised of clean posts, compound sentiment score, pos tag counts, and various other counts. </li>
+								<li>Y was set to four target features - is_Extrovert, is_Sensing, is_Thinking, is_Judging </li>
+							</ul>
+						<li>Preprocessing step was designed to vectorize the clean posts and to select k best features out of the other (non-word) features using column transformer. </li>
+						<li>Since the data was imbalanced Imbalance Learn Pipeline was used to create the models. The pipeline was composed of preprocess (from the above step), random under sampler (to handle class imbalance) and the classification model.</li>
+						<li>Following models were built, trained and tested on dataset:</li>
+							<ul>
+								<li>Cross Validated TF-IDF Logistic Regression</li>
+								<li>Cross Validated Count Vectorized Logistic Regression</li>
+								<li>Cross Validated TF-IDF Logistic Lasso</li>
+								<li>Cross Validated Count Vectorized Logistic Lasso</li>
+								<li>Cross Validated TF-IDF Logistic Ridge</li>
+								<li>Cross Validated Count Vectorized Logistic Ridge</li>
+								<li>TF-IDF Logistic Elasticnet</li>
+								<li>TF-IDF Support Vector Classifier</li>
+								<li>Count Vectorized Support Vector Classifier</li>
+								<li>TF-IDF Naive Bayes</li>
+								<li>Count Vectorized Naive Bayes</li>
+								<li>Count Vectorized Random Forest</li>
+								<li>TF-IDF Random Forest</li>
+							</ul>
+						<li>Evaluation Metrics – Accuracy, Precision, Recall and Weighted F1 were used as the measures to evaluate the models and select the one performing the best. </li>
+						<li>Final Model – Based on the scores for the evaluation metrics used, Logistic Regression Model was selected as the final model for predicting Myers Briggs personality type. </li>
+					</ul>
+				</div>
+			</div>
+	
+			<!-- Accordion card -->
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingSeven7">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseSeven7"
+				aria-expanded="false" aria-controls="collapseSeven7">
+				<h5 class="mb-0">
+					Feature Importance <i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+		
+			<!-- Card body -->
+			<div id="collapseSeven7" class="collapse" role="tabpanel" aria-labelledby="headingSeven7"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>Using Logistic Regression coefficients, we did feature importance and plotted top 20 words used by each of the 4 Myers Briggs traits.</p>
+					<img src="../static/images/extrovert_vs_introvert.png" width="500">
+					<br>
+					<img src="../static/images/sensing_vs_intuition.png" width="500">
+					<br>
+					<img src="../static/images/thinking_vs_feeling.png" width="500">
+					<br>
+					<img src="../static/images/judging_vs_perceiving.png" width="500">
+				</div>
+			</div>
+
+			<!-- Accordion card -->
+			<!-- Card header -->
+			<div class="card-header" role="tab" id="headingEight8">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseEight8"
+				aria-expanded="false" aria-controls="collapseEight8">
+				<h5 class="mb-0">
+					Challenges Faced and Conclusions drawn<i class="fas fa-angle-down rotate-icon"></i>
+				</h5>
+				</a>
+			</div>
+		
+			<!-- Card body -->
+			<div id="collapseEight8" class="collapse" role="tabpanel" aria-labelledby="headingEight8"
+				data-parent="#accordionEx">
+				<div class="card-body">
+					<p>The dataset was heavily imbalanced with most people identifying as introverted (I) and Intuitive (N) rather than extroverted (E) and Sensitive (S). This caused all our models to have a hard time classifying Extroversion vs. Introversion and Sensitivity vs. Intuition. We were able to overcome this problem to some extent by using Imbalance Learn’s Random Under Sampling method. This improved the scores but not significantly. We also added extra words that didn’t seem to be very helpful in classifying a personality trait to the stop words list to make the model predict more efficiently. Our model is able to predict 2 to 4 traits out of a total of 4 traits and we consider this as success because even for human readers it is difficult to accurately predict a person’s Myers Briggs personality type. </p>
+					<p>In our future efforts to improve this model, we plan to add more data specifically for the types that have low counts in our current dataset to balance the classes. We also want to implement a neural network-based model in an attempt to see if that can outperform our current model in accurately predicting all 4 traits of the Myers Briggs personality type. </p>
+				</div>
+			</div>
+
+		</div>
+		<!-- Accordion wrapper -->
+	</div>
+</section>
+
+<hr>
+<br>
+<div class="container">
 	<div class="row">
 		<div class="col-lg-12">
 			<blockquote class="blockquote text-center">
@@ -61,14 +320,9 @@
 			</blockquote>
 		</div>
 	</div>
-    <div class="row">
-		<div class="col-lg-12">
-            First, let's go into Myers-Briggs personality types. Myers and Briggs were 2 intelligent women in the early 1900s who noticed different people thought in different ways. They decided to analyse and classify the different people around them. 
-            During WWII, their published research and personality types were used to identify the best job type for women to do while the men were off at war. 
-            Now, there are 5 attributes and the test is more for fun and self-understanding than finding your place in society.
-		</div>
-	</div>
 </div>
+<br>
+<hr>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
