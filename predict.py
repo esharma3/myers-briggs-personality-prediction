@@ -3,13 +3,26 @@ from preprocess import prep_data
 import time
 import os
 
-def predict(s):
-    return len(s.split(' '))
-
 def predict_e(s):
-    model = load(os.path.join("individual work","clf_is_Extrovert.joblib"))
+
     X = prep_data(s)
-    return model.predict(X)
+
+    # loading the 4 models
+    EorI_model = load(os.path.join("clf_is_Extrovert.joblib"))
+    SorN_model = load(os.path.join("clf_is_Sensing.joblib"))
+    TorF_model = load(os.path.join("clf_is_Thinking.joblib"))
+    JorP_model = load(os.path.join("clf_is_Judging.joblib"))
+
+    # predicting
+    EorI_pred = EorI_model.predict(X)
+    SorN_pred = SorN_model.predict(X)
+    TorF_pred = TorF_model.predict(X)
+    JorP_pred = JorP_model.predict(X)
+
+    # combining the predictions from the 4 models
+    result = combine_classes(EorI_pred, SorN_pred, TorF_pred, JorP_pred)
+
+    return result
 
 if __name__ == "__main__":
     t = time.time()
