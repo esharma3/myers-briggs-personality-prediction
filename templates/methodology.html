@@ -80,7 +80,7 @@
 			<div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
 				data-parent="#accordionEx">
 				<div class="card-body">
-				<p>The purpose of this project is to apply machine learning algorithms to examine if a person’s MBTI traits correlates with their style of writing on forums. </p>
+				<p>The purpose of this project is to apply natural language processing and machine learning classification algorithms to examine if a person’s MBTI traits correlates with his/her style of writing on the forums. </p>
 				</div>
 			</div>
 			</div>
@@ -100,9 +100,9 @@
 			<div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
 				data-parent="#accordionEx">
 				<div class="card-body">
-				<p>The publicly available Myers Briggs personality type dataset on Kaggle was used for this project. This dataset contains over 8675 rows of data, on each row is a person’s:</p>
+				<p>The publicly available Myers Briggs personality type dataset on Kaggle was used for this project. This dataset contains over 8675 rows of data. On each row is a person’s:</p>
 				<ul>
-					<li>Type (4 letter MBTI code/type)</li>
+					<li>Type (4 letter MBTI code/personality type)</li>
 					<li>A section of each of the last 50 things they have posted (Each entry separated by "|||" (3 pipe characters))</li>
 				</ul>
 				</div>
@@ -234,12 +234,12 @@
 						<li>Since the data was imbalanced Imbalance Learn Pipeline was used to create the models. The pipeline was composed of preprocess (from the above step), random under sampler (to handle class imbalance) and the classification model.</li>
 						<li>Following models were built, trained and tested on dataset:</li>
 							<ul>
-								<li>Cross Validated TF-IDF Logistic Regression</li>
-								<li>Cross Validated Count Vectorized Logistic Regression</li>
-								<li>Cross Validated TF-IDF Logistic Lasso</li>
-								<li>Cross Validated Count Vectorized Logistic Lasso</li>
-								<li>Cross Validated TF-IDF Logistic Ridge</li>
-								<li>Cross Validated Count Vectorized Logistic Ridge</li>
+								<li>TF-IDF Logistic Regression</li>
+								<li>Count Vectorized Logistic Regression</li>
+								<li>TF-IDF Logistic Lasso</li>
+								<li>Count Vectorized Logistic Lasso</li>
+								<li>TF-IDF Logistic Ridge</li>
+								<li>Count Vectorized Logistic Ridge</li>
 								<li>TF-IDF Logistic Elasticnet</li>
 								<li>TF-IDF Support Vector Classifier</li>
 								<li>Count Vectorized Support Vector Classifier</li>
@@ -296,7 +296,7 @@
 				data-parent="#accordionEx">
 				<div class="card-body">
 					<p>The dataset was heavily imbalanced with most people identifying as introverted (I) and Intuitive (N) rather than extroverted (E) and Sensitive (S). This caused all our models to have a hard time classifying Extroversion vs. Introversion and Sensitivity vs. Intuition. We were able to overcome this problem to some extent by using Imbalance Learn’s Random Under Sampling method. This improved the scores but not significantly. We also added extra words that didn’t seem to be very helpful in classifying a personality trait to the stop words list to make the model predict more efficiently. Our model is able to predict 2 to 4 traits out of a total of 4 traits and we consider this as success because even for human readers it is difficult to accurately predict a person’s Myers Briggs personality type. </p>
-					<p>In our future efforts to improve this model, we plan to add more data specifically for the types that have low counts in our current dataset to balance the classes. We also want to implement a neural network-based model in an attempt to see if that can outperform our current model in accurately predicting all 4 traits of the Myers Briggs personality type. </p>
+					<p>In our future efforts to improve this model, we plan to add more data specifically for the types that have low counts in our current dataset to balance the classes. We also want to implement a neural network based model in an attempt to see if that can outperform our current model in accurately predicting all 4 traits of the Myers Briggs personality type. </p>
 				</div>
 			</div>
 
