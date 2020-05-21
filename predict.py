@@ -3,10 +3,10 @@ from preprocess import prep_data
 import time
 import os
 import nltk
-nltk.download(‘wordnet’)
-nltk.download(‘stopwords’)
-nltk.download(‘punkt’)
-nltk.download(‘averaged_perceptron_tagger’)
+nltk.download("wordnet")
+nltk.download("stopwords")
+nltk.download("punkt")
+nltk.download("averaged_perceptron_tagger")
 
 def trace_back(combined):
     type_list = [
@@ -30,7 +30,7 @@ def combine_classes(y_pred1, y_pred2, y_pred3, y_pred4):
             str(y_pred1[i]) + str(y_pred2[i]) + str(y_pred3[i]) + str(y_pred4[i])
         )
     result = trace_back(combined)
-    return result
+    return result[0]
 
 def predict(s):
 
