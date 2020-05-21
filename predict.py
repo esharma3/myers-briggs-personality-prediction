@@ -2,18 +2,18 @@ from joblib import load
 from preprocess import prep_data
 import time
 import os
-# import nltk
-# nltk.download("wordnet")
-# nltk.download("stopwords")
-# nltk.download("punkt")
-# nltk.download("averaged_perceptron_tagger")
+
+###############################################################################
+#            FUNCTION TO COMBINE THE RESULTS OF THE 4 MODELS                  #
+###############################################################################
+
 
 def trace_back(combined):
     type_list = [
-    {"0": "I", "1": "E"},
-    {"0": "N", "1": "S"},
-    {"0": "F", "1": "T"},
-    {"0": "P", "1": "J"},
+        {"0": "I", "1": "E"},
+        {"0": "N", "1": "S"},
+        {"0": "F", "1": "T"},
+        {"0": "P", "1": "J"},
     ]
     result = []
     for num in combined:
@@ -22,6 +22,7 @@ def trace_back(combined):
             s += type_list[i][num[i]]
         result.append(s)
     return result
+
 
 def combine_classes(y_pred1, y_pred2, y_pred3, y_pred4):
     combined = []
@@ -32,15 +33,21 @@ def combine_classes(y_pred1, y_pred2, y_pred3, y_pred4):
     result = trace_back(combined)
     return result[0]
 
+
+###############################################################################
+#                           MODEL PREDICTIONS                                 #
+###############################################################################
+
+
 def predict(s):
 
     X = prep_data(s)
 
     # loading the 4 models
-    EorI_model = load(os.path.join("models","clf_is_Extrovert.joblib"))
-    SorN_model = load(os.path.join("models","clf_is_Sensing.joblib"))
-    TorF_model = load(os.path.join("models","clf_is_Thinking.joblib"))
-    JorP_model = load(os.path.join("models","clf_is_Judging.joblib"))
+    EorI_model = load(os.path.join("models", "clf_is_Extrovert.joblib"))
+    SorN_model = load(os.path.join("models", "clf_is_Sensing.joblib"))
+    TorF_model = load(os.path.join("models", "clf_is_Thinking.joblib"))
+    JorP_model = load(os.path.join("models", "clf_is_Judging.joblib"))
 
     # predicting
     EorI_pred = EorI_model.predict(X)
@@ -52,6 +59,11 @@ def predict(s):
     result = combine_classes(EorI_pred, SorN_pred, TorF_pred, JorP_pred)
 
     return result
+
+
+###############################################################################
+#                                   MAIN                                      #
+###############################################################################
 
 if __name__ == "__main__":
     t = time.time()
