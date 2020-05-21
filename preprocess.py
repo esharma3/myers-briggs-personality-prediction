@@ -3,17 +3,36 @@ import time
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download("stopwords")
-# lemmitizing
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem import WordNetLemmatizer
-# nltk.download("wordnet")
-# nltk.download("vader_lexicon")
-# sentiment scoring
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-mbti = ["INFP", "INFJ", "INTP", "INTJ", "ENTP", "enfp", "ISTP", "ISFP", "ENTJ", "ISTJ", "ENFJ", "ISFJ", "ESTP", "ESFP", "ESFJ", "ESTJ"]
+
+###########################################################################################
+#                        PREPARING DATA FOR MACHINE LEARNING                              #
+###########################################################################################
+
+# 16 MBTI types
+mbti = [
+    "INFP",
+    "INFJ",
+    "INTP",
+    "INTJ",
+    "ENTP",
+    "enfp",
+    "ISTP",
+    "ISFP",
+    "ENTJ",
+    "ISTJ",
+    "ENFJ",
+    "ISFJ",
+    "ESTP",
+    "ESFP",
+    "ESFJ",
+    "ESTJ",
+]
+
+# part of speech dictionary
 tags_dict = {
     "ADJ_avg": ["JJ", "JJR", "JJS"],
     "ADP_avg": ["EX", "TO"],
@@ -28,53 +47,59 @@ tags_dict = {
     ".": ["#", "$", "''", "(", ")", ",", ".", ":"],
     "X": ["FW", "LS", "UH"],
 }
+
+# input to the model
 features = [
-            "clean_posts",
-            "compound_sentiment",
-            "ADJ_avg",
-            "ADP_avg",
-            "ADV_avg",
-            "CONJ_avg",
-            "DET_avg",
-            "NOUN_avg",
-            "NUM_avg",
-            "PRT_avg",
-            "PRON_avg",
-            "VERB_avg",
-            "qm",
-            "em",
-            "colons",
-            "emojis",
-            "word_count",
-            "unique_words",
-            "upper",
-            "link_count",
-            "ellipses",
-            "img_count",
-        ]
+    "clean_posts",
+    "compound_sentiment",
+    "ADJ_avg",
+    "ADP_avg",
+    "ADV_avg",
+    "CONJ_avg",
+    "DET_avg",
+    "NOUN_avg",
+    "NUM_avg",
+    "PRT_avg",
+    "PRON_avg",
+    "VERB_avg",
+    "qm",
+    "em",
+    "colons",
+    "emojis",
+    "word_count",
+    "unique_words",
+    "upper",
+    "link_count",
+    "ellipses",
+    "img_count",
+]
+
 
 def unique_words(s):
-    unique = set(s.split(' ')) 
+    unique = set(s.split(" "))
     return len(unique)
+
 
 def emojis(post):
     # does not include emojis made purely from symbols, only :word:
     emoji_count = 0
     words = post.split()
     for e in words:
-        if 'http' not in e:
-            if e.count(':')==2:
-                emoji_count+=1
+        if "http" not in e:
+            if e.count(":") == 2:
+                emoji_count += 1
     return emoji_count
+
 
 def colons(post):
     # Includes colons used in emojis
     colon_count = 0
     words = post.split()
     for e in words:
-        if 'http' not in e:
-            colon_count+=e.count(':')
+        if "http" not in e:
+            colon_count += e.count(":")
     return colon_count
+
 
 def lemmitize(s):
     lemmatizer = WordNetLemmatizer()
@@ -82,85 +107,79 @@ def lemmitize(s):
     for word in s.split(" "):
         lemmatizer.lemmatize(word)
         if word not in stopwords.words("english"):
-            new_s+=word+" "
+            new_s += word + " "
     return new_s[:-1]
 
+
 def clean(s):
-    #remove urls
-    s = re.sub(
-            re.compile(r"https?:\/\/(www)?.?([A-Za-z_0-9-]+).*"),
-            "",
-            s
-        )
-    #remove emails
-    s = re.sub(
-        re.compile(r"\S+@\S+"), "",
-        s
-        )
-    #remove punctuation
-    s = re.sub(
-        re.compile(r"[^a-z\s]"), "",
-        s
-        )
-    #Make everything lowercase
+    # remove urls
+    s = re.sub(re.compile(r"https?:\/\/(www)?.?([A-Za-z_0-9-]+).*"), "", s)
+    # remove emails
+    s = re.sub(re.compile(r"\S+@\S+"), "", s)
+    # remove punctuation
+    s = re.sub(re.compile(r"[^a-z\s]"), "", s)
+    # Make everything lowercase
     s = s.lower()
-    #remove all personality types
+    # remove all personality types
     for type_word in mbti:
-        s = s.replace(
-            type_word.lower(), "")
+        s = s.replace(type_word.lower(), "")
     return s
+
 
 def prep_counts(s):
     clean_s = clean(s)
     d = {
-        'clean_posts':lemmitize(clean_s),
-        'link_count':s.count('http'),
-        'youtube':s.count('youtube') + s.count('youtu.be'),
-        'img_count':len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s)),
-        'upper':len([x for x in s.split() if x.isupper()]),
-        'char_count':len(s),
-        'word_count':clean_s.count(' ')+1,
-        'qm':s.count('?'),
-        'em':s.count('!'),
-        'colons':colons(s),
-        'emojis':emojis(s),
-        'unique_words':unique_words(clean_s),
-        'ellipses':len(re.findall(r'\.\.\.\ ', s))
-        }
+        "clean_posts": lemmitize(clean_s),
+        "link_count": s.count("http"),
+        "youtube": s.count("youtube") + s.count("youtu.be"),
+        "img_count": len(re.findall(r"(\.jpg)|(\.jpeg)|(\.gif)|(\.png)", s)),
+        "upper": len([x for x in s.split() if x.isupper()]),
+        "char_count": len(s),
+        "word_count": clean_s.count(" ") + 1,
+        "qm": s.count("?"),
+        "em": s.count("!"),
+        "colons": colons(s),
+        "emojis": emojis(s),
+        "unique_words": unique_words(clean_s),
+        "ellipses": len(re.findall(r"\.\.\.\ ", s)),
+    }
     return clean_s, d
+
 
 def prep_sentiment(s):
     analyzer = SentimentIntensityAnalyzer()
     score = analyzer.polarity_scores(s)
     d = {
-        'compound_sentiment':score["compound"],
-        'pos_sentiment':score["pos"],
-        'neg_sentiment':score["neg"],
-        'neu_sentiment':score["neu"]
-        }
+        "compound_sentiment": score["compound"],
+        "pos_sentiment": score["pos"],
+        "neg_sentiment": score["neg"],
+        "neu_sentiment": score["neu"],
+    }
     return d
+
 
 def tag_pos(s):
     tagged_words = nltk.pos_tag(word_tokenize(s))
-    d = dict.fromkeys(tags_dict,0) 
+    d = dict.fromkeys(tags_dict, 0)
     for tup in tagged_words:
         tag = tup[1]
-        for key,val in tags_dict.items():
+        for key, val in tags_dict.items():
             if tag in val:
                 tag = key
-        d[tag]+=1
+        d[tag] += 1
     return d
+
 
 def prep_data(s):
     clean_s, d = prep_counts(s)
-    d.update(
-        prep_sentiment(
-            lemmitize(clean_s)
-            )
-        )
-    d.update(
-        tag_pos(clean_s))
+    d.update(prep_sentiment(lemmitize(clean_s)))
+    d.update(tag_pos(clean_s))
     return pd.DataFrame([d])[features]
+
+
+###########################################################################################
+#                                        MAIN                                             #
+###########################################################################################
 
 if __name__ == "__main__":
     t = time.time()
