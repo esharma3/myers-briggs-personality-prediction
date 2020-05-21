@@ -24,6 +24,7 @@ nltk = "*"
 vadersentiment = "*"
 seaborn = "*"
 wordcloud = "*"
+imblearn = "*"
 
 [requires]
 python_version = "3.7"
