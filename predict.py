@@ -2,11 +2,11 @@ from joblib import load
 from preprocess import prep_data
 import time
 import os
-import nltk
-nltk.download("wordnet")
-nltk.download("stopwords")
-nltk.download("punkt")
-nltk.download("averaged_perceptron_tagger")
+# import nltk
+# nltk.download("wordnet")
+# nltk.download("stopwords")
+# nltk.download("punkt")
+# nltk.download("averaged_perceptron_tagger")
 
 def trace_back(combined):
     type_list = [
