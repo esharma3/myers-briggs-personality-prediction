@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "c80d3ff5-e572-4643-a9d7-d4b9230c70fb",
+		"name": "mb_predictor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://mb-predictor-motetuzs5q-uc.a.run.app/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mb-predictor-motetuzs5q-uc.a.run.app/",
+					"protocol": "https",
+					"host": [
+						"mb-predictor-motetuzs5q-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://mb-predictor-motetuzs5q-uc.a.run.app/analysis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mb-predictor-motetuzs5q-uc.a.run.app/analysis",
+					"protocol": "https",
+					"host": [
+						"mb-predictor-motetuzs5q-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"analysis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://mb-predictor-motetuzs5q-uc.a.run.app/methodology",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mb-predictor-motetuzs5q-uc.a.run.app/methodology",
+					"protocol": "https",
+					"host": [
+						"mb-predictor-motetuzs5q-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"methodology"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://mb-predictor-motetuzs5q-uc.a.run.app/about",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mb-predictor-motetuzs5q-uc.a.run.app/about",
+					"protocol": "https",
+					"host": [
+						"mb-predictor-motetuzs5q-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"about"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
