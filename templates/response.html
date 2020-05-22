@@ -49,38 +49,44 @@
 	</div>
 </section>
 
-<!-- This is a simple white section with just a header and paragraph(s)-->
-<section class="basic-white">
-	<br/>
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<h2> Welcome </h2>
-				<hr/>
-				<p>Have you heard of Myers-Briggs personality types? Are you active on any forums? Enter a post from your forum or something similar and we'll try to predict your Myers-Briggs personality type.</p>
-			</div> 
-		</div>
-	</div>
-</section>
-
 <!-- <form> -->
 <section id="search">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <h2 style="text-align: center;">Predict some more?</h2>
+            <br>
+                <div class="form-group">
+                    <form class="form-inline my-2 my-lg-0" method="POST" action="/response">
+                        <input class="form-control mr-md-2" type="text" name="fsnippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
+                        <button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit" value="Submit">Go!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- </form> -->
+
+<!-- Prediction -->
+<section class="prediction">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-			<h2 style="text-align: center;">Type to predict</h2>
-			<br>
-				<div class="form-group">
-					<form class="form-inline my-2 my-lg-0" method="POST" action="/response">
-						<input class="form-control mr-md-2" type="text" name="fsnippet" placeholder="Please enter up to 160 characters" aria-label="Search" required>
-						<button class="btn btn-outline-success my-2 my-sm-0" id="search_button" type="submit" value="Submit">Go!</button>
-					</form>
+				{% if name %}
+				<div class="alert alert-warning alert-dismissible fade show">
+					<h4 class="alert-heading"><i class="fa fa-warning"></i>You typed:</h4>
+					<i>"{{string}}"</i>
+					<hr>
+					<p class="mb-0">Your predicted personality type is:</p><strong>{{name}}</strong>
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					{% endif %}
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!-- </form> -->
+<!-- End of prediction -->
 
 <!-- Link to MB website -->
 <hr>
@@ -88,14 +94,13 @@
 <div class="container">
 <div class="card">
 	<div class="card-header">
-	  The more you know!
+		Before you go:
 	</div>
 	<div class="card-body">
-	  <h5 class="card-title">Curious to know more about the 16 personality types?</h5>
-	  <p class="card-text">Understand yourself better with free, detailed descriptions of each of Myers and Briggs' 16 personality types. Learn the meaning of your personality type, your strengths and weaknesses, and find practical info on careers and relationships for your type.
-		Not sure which personality type you are? </p>
+	  <h5 class="card-title">Curious to know more about your {{name}} personality type?</h5>
+	  <p class="card-text">Check it out on the official MB Website:</p>
 	  <div style="text-align:center">
-	  	<a href="https://www.16personalities.com/" class="btn btn-outline-success my-2 my-sm-0">Visit the official myers briggs website</a>
+	  	<a href="https://www.16personalities.com/{{name}}-personality" class="btn btn-outline-success my-2 my-sm-0">16personalities.com/{{name}}</a>
 	  </div>
 	</div>
   </div>

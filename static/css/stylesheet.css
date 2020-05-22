@@ -28,7 +28,7 @@ section {
 
 /* Basic white section */
 .basic-white {
-    height: 300px;
+    height: 200px;
     background-color: #fff;
 }
 
@@ -51,7 +51,7 @@ section {
 }
 
 .navbar a:hover {
-  border-bottom: 3px solid #fad500;
+  text-decoration: underline 2px solid #fad500;
   color: #666;
 }
 
@@ -62,13 +62,14 @@ section {
 .navbar a {
   font-weight: 300;
   color: #666;
+  text-shadow: #666 .5px 0 2px;
 }
 /* End of nav */
 
 /* This is all that badass hero image section*/
 .bgimage {
   width:100%;
-  height:500px;
+  height:400px;
   padding: 25px 25px;
   background: url('../images/home-personalities-bg.png');
   background-repeat: no-repeat;
@@ -140,22 +141,11 @@ section {
 }
 
 /* Search bar */
-#search {
-  text-align: center;
-  display: block;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-}
-
 .form-control {
   border-radius: .50rem;
   border-color: #fad500;
   height: 50px;
-  min-width: 450px;
+  min-width: 380px;
   align-items: center;
   align-content: center;
   text-align: center;
@@ -163,6 +153,13 @@ section {
   justify-content: center;
   align-self: center;
   vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 25%;
 }
 
 
@@ -282,4 +279,28 @@ to   { opacity: 1; }
 /* Accordion */
 .md-accordion a {
   color: #A386B4;
+}
+
+/* alert */
+.alert {
+  color: #333333;
+  border-color: #28a745;
+  background-color: rgba(86, 172, 138, .20);
+  text-align: center;
+}
+
+.alert hr{
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.tz-gallery .lightbox img { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width:320px; 
+  height:300px; 
 }

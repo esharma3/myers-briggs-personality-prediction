@@ -20,7 +20,7 @@ def response():
         snippet = request.form["fsnippet"]
         # Testing with predict.py
         personality_type = predict(snippet)
-    return render_template("index.html", name=personality_type, string=snippet)
+    return render_template("response.html", name=personality_type, string=snippet)
 
 
 @app.route("/analysis")
