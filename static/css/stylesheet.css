@@ -144,22 +144,22 @@ section {
 .form-control {
   border-radius: .50rem;
   border-color: #fad500;
+
   height: 50px;
   min-width: 380px;
+
   align-items: center;
   align-content: center;
   text-align: center;
-  display: inline;
   justify-content: center;
   align-self: center;
   vertical-align: middle;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   display: block;
+  
   margin-left: auto;
   margin-right: auto;
-  margin-left: 25%;
+  margin-left: 30%;
 }
 
 
