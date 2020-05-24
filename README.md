@@ -24,17 +24,17 @@ We acknowledge the fact that all personality types are equal.
 
 *   First step was to divide the single “type” feature into four features:
     Extroversion vs. Introversion
-    I - 0
-    E - 1
-    Sensing vs. Intuition
-    N - 0
-    S - 1
-    Thinking vs. Feeling
-    F - 0
-    T - 1
-    Judging vs. Perceiving
-    P - 0
-    J - 1
+        *   I - 0
+        *   E - 1
+        Sensing vs. Intuition
+        *   N - 0
+        *   S - 1
+        Thinking vs. Feeling
+        *   F - 0
+        *   T - 1
+        Judging vs. Perceiving
+        *   P - 0
+        *   J - 1
 *   The second step was to use random under sampling technique when building machine learning model. 
 
 2.  **Finding Correlation:** Pandas correlation method was used to plot the correlation matrix to look for the presence of any strong correlations between any of the four personality features. No correlation was found.
