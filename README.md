@@ -23,16 +23,16 @@ We acknowledge the fact that all personality types are equal.
 1.  **Class Imbalance:** To examine the proportionality of each of the sixteen personality types, Matplotlib was used to plot the value counts of each of these sixteen types. Since the classes were heavily imbalanced, following steps were taken:
 
 *   First step was to divide the single “type” feature into four features:
-    Extroversion vs. Introversion
+    *   Extroversion vs. Introversion
         *   I - 0
         *   E - 1
-        Sensing vs. Intuition
+    *   Sensing vs. Intuition
         *   N - 0
         *   S - 1
-        Thinking vs. Feeling
-        *   F - 0
+    *   Thinking vs. Feeling
+        *   F - 0   
         *   T - 1
-        Judging vs. Perceiving
+    *   Judging vs. Perceiving
         *   P - 0
         *   J - 1
 *   The second step was to use random under sampling technique when building machine learning model. 
