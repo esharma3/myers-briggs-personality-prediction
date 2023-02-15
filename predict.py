@@ -39,7 +39,7 @@ def combine_classes(y_pred1, y_pred2, y_pred3, y_pred4):
 ###############################################################################
 
 
-def predict(s):
+def predict_e(s):
 
     X = prep_data(s)
 
